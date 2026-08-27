@@ -279,8 +279,8 @@ a {
 .hero-25-mark {
   position: absolute;
   left: clamp(28px, 4vw, 66px);
-  top: clamp(170px, 25vh, 250px);
-  width: min(38vw, 480px);
+  top: clamp(150px, 22vh, 220px);
+  width: min(34vw, 400px);
   z-index: 3;
   pointer-events: none;
 }
@@ -290,7 +290,7 @@ a {
   width: 100%;
   height: auto;
   mix-blend-mode: screen;
-  opacity: 0.82;
+  opacity: 0.62;
 }
 
 .hero-statement__mark {
@@ -672,7 +672,7 @@ a {
 
   .hero-25-mark {
     top: 150px;
-    width: min(50vw, 360px);
+    width: min(44vw, 320px);
   }
 }
 
@@ -705,8 +705,8 @@ a {
   }
 
   .hero-25-mark {
-    top: 120px;
-    width: calc(100% - 36px);
+    top: 170px;
+    width: min(70vw, 300px);
   }
 
   .hero-statement p span,
