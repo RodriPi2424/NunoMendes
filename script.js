@@ -49,6 +49,19 @@ function formatTime(dateValue, timeValue) {
   }).format(parsed);
 }
 
+function formatWeekday(dateValue) {
+  if (!dateValue) {
+    return "DAY TBC";
+  }
+
+  const parsed = new Date(`${dateValue}T12:00:00`);
+  if (Number.isNaN(parsed.getTime())) {
+    return "DAY TBC";
+  }
+
+  return new Intl.DateTimeFormat("en-GB", { weekday: "long" }).format(parsed).toUpperCase();
+}
+
 function displayTeamName(value) {
   if (value === "Lille") {
     return "LOSC Lille";
@@ -145,6 +158,7 @@ function renderNextGame(event, homeTeam, awayTeam) {
   const homeBadge = homeTeam?.badge || event.strHomeTeamBadge || "";
   const awayBadge = awayTeam?.badge || event.strAwayTeamBadge || "";
   const dateLabel = formatDate(event.dateEventLocal || event.dateEvent);
+  const weekdayLabel = formatWeekday(event.dateEventLocal || event.dateEvent);
   const timeLabel = formatTime(event.dateEventLocal || event.dateEvent, event.strTimeLocal || event.strTime);
   const kickoff = parseEventTime(event);
   nextGamesNode.innerHTML = `
@@ -159,7 +173,7 @@ function renderNextGame(event, homeTeam, awayTeam) {
         </span>
       </div>
       <div class="next-game__details">
-        <div class="next-game__date">${dateLabel}<span>${timeLabel} CET</span></div>
+        <div class="next-game__date">${dateLabel}<span><strong>${weekdayLabel}</strong><i></i>${timeLabel} CET</span></div>
         <div class="next-game__countdown-label">Live Countdown</div>
         <div class="next-game__countdown" data-next-countdown>
           <span><b data-countdown-days>00</b><small>Days</small></span>

@@ -699,6 +699,7 @@ a {
 
 .next-game__date {
   color: #f5f0e8;
+  font-family: Anton, Impact, sans-serif;
   font-size: 14px;
   font-weight: 900;
   letter-spacing: 0.08em;
@@ -706,10 +707,24 @@ a {
 }
 
 .next-game__date span {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 7px;
   margin-top: 2px;
-  color: #ff2738;
+  color: rgba(245, 240, 232, 0.72);
+  font-family: "League Spartan", "Segoe UI", Arial, sans-serif;
   font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.next-game__date span strong {
+  color: #ff2738;
+}
+
+.next-game__date span i {
+  width: 1px;
+  height: 10px;
+  background: rgba(245, 240, 232, 0.35);
 }
 
 .next-game__countdown-label {
