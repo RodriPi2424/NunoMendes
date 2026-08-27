@@ -867,18 +867,6 @@ a {
   line-height: 1;
 }
 
-.next-game__versus::after {
-  content: "";
-  position: absolute;
-  top: -17px;
-  right: -13px;
-  width: 1px;
-  height: 46px;
-  background: #ff2738;
-  transform: rotate(24deg);
-  opacity: 0.75;
-}
-
 .next-game__details {
   display: grid;
   gap: 12px;
