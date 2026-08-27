@@ -642,27 +642,27 @@ a {
 
 /* Next fixture reference layout */
 .next-games {
-  width: min(36vw, 540px);
-  padding: 8px 14px 9px;
+  width: min(30vw, 450px);
+  padding: 6px 10px 7px;
   border-radius: 10px;
 }
 
 .next-games__eyebrow,
 .next-games__title {
-  transform: translateY(20px);
+  transform: none;
 }
 
 .next-games__eyebrow,
 .next-game__eyebrow {
   color: #ff2738;
-  font-size: 8px;
+  font-size: 7px;
   letter-spacing: 0.42em;
 }
 
 .next-games__title,
 .next-game__title {
-  margin: 3px 0 6px;
-  font-size: clamp(28px, 3.5vw, 56px);
+  margin: 2px 0 4px;
+  font-size: clamp(24px, 3vw, 46px);
 }
 
 .next-games__card {
@@ -673,7 +673,7 @@ a {
 .next-game {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 6px;
   align-items: end;
 }
 
@@ -693,7 +693,7 @@ a {
 
 .next-game__details {
   border-left: 1px solid rgba(255, 255, 255, 0.14);
-  padding-left: 14px;
+  padding-left: 8px;
 }
 
 .next-game__date {
