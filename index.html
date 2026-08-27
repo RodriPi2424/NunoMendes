@@ -11,7 +11,7 @@
       <div class="hero-background">
         <img
           class="hero-background__image"
-          src="assets/hero-background-new.png"
+          src="assets/hero-background.png"
           alt=""
           aria-hidden="true"
         >
@@ -27,8 +27,11 @@
           alt="Nuno Mendes"
         >
         <nav class="hero-nav" aria-label="Primary">
-          <a href="#fixture">Next Game</a>
-          <a href="#story">Story</a>
+          <a class="is-active" href="#fixture">Home</a>
+          <a href="#story">About</a>
+          <a href="#career">Career</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#store">Store</a>
         </nav>
         <button class="hero-menu" type="button" aria-label="Open menu">
           <span></span>
@@ -39,38 +42,35 @@
 
       <div class="hero-number" aria-hidden="true">25</div>
       <div class="hero-name-shadow" aria-hidden="true">NUNO MENDES</div>
+      <div class="hero-overflow-portrait" aria-hidden="true">
+        <img src="assets/hero-section-image.png" alt="">
+      </div>
 
       <section class="hero-grid">
-        <div class="hero-copy">
-          <p class="hero-kicker">Nuno Mendes</p>
-          <h1 class="hero-message">No Limits.<br>Just Forward.</h1>
-          <p class="hero-subcopy">
-            Built for decisive runs, relentless recovery, and the kind of presence that changes the
-            rhythm of a match.
-          </p>
-        </div>
-
         <section class="fixture" id="fixture" aria-label="Next match">
           <p class="fixture__eyebrow">Next Game</p>
-          <div class="fixture-card">
-            <h2 class="fixture-card__title">Game</h2>
-            <div class="fixture-card__teams">
-              <figure class="fixture-team">
-                <img data-home-badge src="" alt="Home team">
-                <figcaption data-home-name>Home Team</figcaption>
-              </figure>
-              <div class="fixture-card__versus">VS</div>
-              <figure class="fixture-team">
-                <img data-away-badge src="" alt="Away team">
-                <figcaption data-away-name>Away Team</figcaption>
-              </figure>
-            </div>
-            <div class="fixture-card__meta">
-              <div class="fixture-card__date" data-date>DATE TBC</div>
-              <div class="fixture-card__time" data-time>TIME TBC</div>
-              <div class="fixture-card__league" data-meta>Upcoming fixture</div>
-            </div>
+          <h1 class="fixture__title">Game</h1>
+          <div class="fixture__rule" aria-hidden="true"></div>
+          <div class="fixture__teams">
+            <figure class="fixture-team">
+              <img data-home-badge src="https://r2.thesportsdb.com/images/media/team/badge/2giize1534005340.png" alt="Lille">
+              <figcaption data-home-name>Lille</figcaption>
+            </figure>
+            <div class="fixture__versus">VS</div>
+            <figure class="fixture-team">
+              <img data-away-badge src="https://r2.thesportsdb.com/images/media/team/badge/rwqrrq1473504808.png" alt="Paris Saint-Germain">
+              <figcaption data-away-name>Paris Saint-Germain</figcaption>
+            </figure>
           </div>
+          <div class="fixture__meta">
+            <div class="fixture__date" data-date>28 AUGUST 2026</div>
+            <div class="fixture__time" data-time>20:45</div>
+            <div class="fixture__league" data-meta>Ligue 1</div>
+          </div>
+          <a class="store-button" id="store" href="#store" aria-label="Open store">
+            <span>Store</span>
+            <span aria-hidden="true">+</span>
+          </a>
         </section>
 
         <div class="hero-visual">

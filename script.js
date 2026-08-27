@@ -62,6 +62,22 @@ function formatTime(dateValue, timeValue) {
   }).format(parsed);
 }
 
+function displayTeamName(value) {
+  if (value === "Lille") {
+    return "LOSC Lille";
+  }
+
+  return value || "Team TBC";
+}
+
+function displayLeagueName(value) {
+  if (value === "French Ligue 1") {
+    return "Ligue 1";
+  }
+
+  return value || "Upcoming fixture";
+}
+
 async function loadNextFixture() {
   try {
     const response = await fetch(NEXT_EVENT_URL, { cache: "no-store" });
@@ -77,13 +93,13 @@ async function loadNextFixture() {
       throw new Error("No upcoming event found");
     }
 
-    setText(homeName, event.strHomeTeam || "Home Team");
-    setText(awayName, event.strAwayTeam || "Away Team");
+    setText(homeName, displayTeamName(event.strHomeTeam));
+    setText(awayName, displayTeamName(event.strAwayTeam));
     setBadge(homeBadge, event.strHomeTeamBadge, event.strHomeTeam || "Home team");
     setBadge(awayBadge, event.strAwayTeamBadge, event.strAwayTeam || "Away team");
     setText(dateNode, formatDate(event.dateEventLocal || event.dateEvent));
     setText(timeNode, formatTime(event.dateEventLocal || event.dateEvent, event.strTimeLocal || event.strTime));
-    setText(metaNode, event.strLeague || "Upcoming fixture");
+    setText(metaNode, displayLeagueName(event.strLeague));
   } catch (error) {
     setText(metaNode, "Live fixture feed unavailable");
   }
