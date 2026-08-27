@@ -276,29 +276,11 @@ a {
   z-index: 3;
 }
 
-.hero-25-mark {
-  position: absolute;
-  left: clamp(28px, 4vw, 66px);
-  top: clamp(150px, 22vh, 220px);
-  width: min(34vw, 400px);
-  z-index: 3;
-  pointer-events: none;
-}
-
-.hero-25-mark img {
-  display: block;
-  width: 100%;
-  height: auto;
-  mix-blend-mode: screen;
-  opacity: 0.62;
-}
-
 .hero-statement__mark {
-  height: 20px;
   color: #c51f2d;
-  font-family: Georgia, serif;
-  font-size: 56px;
-  line-height: 0.45;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 38px;
+  line-height: 0.5;
 }
 
 .hero-statement p {
@@ -670,10 +652,6 @@ a {
     width: min(52vw, 460px);
   }
 
-  .hero-25-mark {
-    top: 150px;
-    width: min(44vw, 320px);
-  }
 }
 
 @media (max-width: 640px) {
@@ -702,11 +680,6 @@ a {
   .hero-statement {
     top: 118px;
     width: calc(100% - 36px);
-  }
-
-  .hero-25-mark {
-    top: 170px;
-    width: min(70vw, 300px);
   }
 
   .hero-statement p span,
