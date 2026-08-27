@@ -884,7 +884,7 @@ a {
   gap: 10px;
   color: #f5f0e8;
   font-family: "League Spartan", "Segoe UI", Arial, sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: 0.04em;
   line-height: 1;
@@ -906,7 +906,7 @@ a {
   margin-top: 5px;
   color: rgba(245, 240, 232, 0.78);
   font-family: "League Spartan", "Segoe UI", Arial, sans-serif;
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 0.08em;
 }
 
