@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nuno Mendes</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="hero" aria-label="Nuno Mendes hero artwork">
+      <div class="hero-background">
+        <img
+          class="hero-background__image"
+          src="assets/hero-background-new.png"
+          alt=""
+          aria-hidden="true"
+        >
+      </div>
+      <div class="hero-atmosphere" aria-hidden="true"></div>
+      <div class="hero-smoke" aria-hidden="true"></div>
+      <div class="rain" aria-hidden="true"></div>
+
+      <header class="hero-header">
+        <img
+          class="hero-logo"
+          src="assets/nuno-mendes-logo.png"
+          alt="Nuno Mendes"
+        >
+        <nav class="hero-nav" aria-label="Primary">
+          <a href="#fixture">Next Game</a>
+          <a href="#story">Story</a>
+        </nav>
+        <button class="hero-menu" type="button" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+
+      <div class="hero-number" aria-hidden="true">25</div>
+      <div class="hero-name-shadow" aria-hidden="true">NUNO MENDES</div>
+
+      <section class="hero-grid">
+        <div class="hero-copy">
+          <p class="hero-kicker">Nuno Mendes</p>
+          <h1 class="hero-message">No Limits.<br>Just Forward.</h1>
+          <p class="hero-subcopy">
+            Built for decisive runs, relentless recovery, and the kind of presence that changes the
+            rhythm of a match.
+          </p>
+        </div>
+
+        <section class="fixture" id="fixture" aria-label="Next match">
+          <p class="fixture__eyebrow">Next Game</p>
+          <div class="fixture-card">
+            <h2 class="fixture-card__title">Game</h2>
+            <div class="fixture-card__teams">
+              <figure class="fixture-team">
+                <img data-home-badge src="" alt="Home team">
+                <figcaption data-home-name>Home Team</figcaption>
+              </figure>
+              <div class="fixture-card__versus">VS</div>
+              <figure class="fixture-team">
+                <img data-away-badge src="" alt="Away team">
+                <figcaption data-away-name>Away Team</figcaption>
+              </figure>
+            </div>
+            <div class="fixture-card__meta">
+              <div class="fixture-card__date" data-date>DATE TBC</div>
+              <div class="fixture-card__time" data-time>TIME TBC</div>
+              <div class="fixture-card__league" data-meta>Upcoming fixture</div>
+            </div>
+          </div>
+        </section>
+
+        <div class="hero-visual">
+          <img
+            src="assets/nuno-mendes-portrait.png"
+            alt="Portrait of Nuno Mendes"
+          >
+        </div>
+      </section>
+    </main>
+
+    <section class="story-scroll" id="story" data-story-scroll aria-label="About Nuno Mendes">
+      <div class="story-scroll__viewport">
+        <div class="story-scroll__track">
+          <article class="story-panel story-panel--intro">
+            <div class="story-panel__eyebrow">01</div>
+            <h2 class="story-panel__title">Born To Break Lines.</h2>
+            <p class="story-panel__body">
+              Built on speed, courage, and constant aggression, Nuno Mendes plays with the mentality
+              of a winger and the discipline of an elite defender.
+            </p>
+          </article>
+          <article class="story-panel story-panel--accent">
+            <div class="story-panel__eyebrow">02</div>
+            <h2 class="story-panel__title">Pressure Is The Standard.</h2>
+            <p class="story-panel__body">
+              From Lisbon to Paris and the biggest nights in Europe, every step has demanded control,
+              intensity, and calm when the tempo rises.
+            </p>
+          </article>
+          <article class="story-panel story-panel--outline">
+            <div class="story-panel__eyebrow">03</div>
+            <h2 class="story-panel__title">No Limits. Just Forward.</h2>
+            <p class="story-panel__body">
+              This space is built to tell the full story: the mindset, the work, the moments, and the
+              ambition still driving everything ahead.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
