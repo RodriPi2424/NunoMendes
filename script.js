@@ -133,53 +133,18 @@ function renderNextGame(event, homeTeam, awayTeam) {
   const away = displayTeamName(event.strAwayTeam);
   const homeBadge = homeTeam?.badge || event.strHomeTeamBadge || "";
   const awayBadge = awayTeam?.badge || event.strAwayTeamBadge || "";
-  const dateLabel = formatDate(event.dateEventLocal || event.dateEvent);
-  const timeLabel = formatTime(event.dateEventLocal || event.dateEvent, event.strTimeLocal || event.strTime);
-  const kickoff = parseEventTime(event);
-
   nextGamesNode.innerHTML = `
     <article class="next-game">
       <div class="next-game__teams">
         <span class="next-game__team">
           <img class="next-game__badge" src="${homeBadge}" alt="${homeTeam?.name || home}">
-          <span class="next-game__team-name">${home}</span>
         </span>
-        <span class="next-game__versus" aria-hidden="true">vs</span>
         <span class="next-game__team">
           <img class="next-game__badge" src="${awayBadge}" alt="${awayTeam?.name || away}">
-          <span class="next-game__team-name">${away}</span>
         </span>
-      </div>
-      <div class="next-game__meta">
-        <div class="next-game__meta-item">
-          <span class="next-game__label">Day</span>
-          <span class="next-game__value" data-next-day>${dateLabel}</span>
-        </div>
-        <div class="next-game__meta-item">
-          <span class="next-game__label">Time</span>
-          <span class="next-game__value" data-next-time>${timeLabel}</span>
-        </div>
-        <div class="next-game__countdown" data-next-countdown>${kickoff ? formatCountdown(kickoff) : "TBC"}</div>
       </div>
     </article>
   `;
-
-  clearCountdownTimer();
-
-  if (!kickoff) {
-    return;
-  }
-
-  const countdownNode = nextGamesNode.querySelector("[data-next-countdown]");
-
-  const tick = () => {
-    if (countdownNode) {
-      countdownNode.textContent = formatCountdown(kickoff);
-    }
-  };
-
-  tick();
-  countdownTimer = window.setInterval(tick, 1000);
 }
 
 async function loadNextGames() {
