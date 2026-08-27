@@ -272,6 +272,7 @@ a {
   left: clamp(28px, 4vw, 66px);
   top: clamp(150px, 22vh, 220px);
   width: min(44vw, 620px);
+  transform: translateY(-24px);
   z-index: 3;
 }
 
