@@ -163,18 +163,24 @@ function renderNextGame(event, homeTeam, awayTeam) {
   const kickoff = parseEventTime(event);
   nextGamesNode.innerHTML = `
     <article class="next-game">
-      <div class="next-game__teams">
-        <span class="next-game__team">
-          <img class="next-game__badge" src="${homeBadge}" alt="${homeTeam?.name || home}">
-        </span>
-        <span class="next-game__versus" aria-hidden="true">vs</span>
-        <span class="next-game__team">
-          <img class="next-game__badge" src="${awayBadge}" alt="${awayTeam?.name || away}">
-        </span>
+      <div class="next-game__main">
+        <div class="next-game__eyebrow">Next Game</div>
+        <h2 class="next-game__title">Upcoming</h2>
+        <div class="next-game__underline"></div>
+        <div class="next-game__teams">
+          <span class="next-game__team">
+            <img class="next-game__badge" src="${homeBadge}" alt="${homeTeam?.name || home}">
+          </span>
+          <span class="next-game__versus" aria-hidden="true">vs</span>
+          <span class="next-game__team">
+            <img class="next-game__badge" src="${awayBadge}" alt="${awayTeam?.name || away}">
+          </span>
+        </div>
       </div>
       <div class="next-game__details">
-        <div class="next-game__date">${dateLabel}<span><strong>${weekdayLabel}</strong><i></i>${timeLabel} CET</span></div>
-        <div class="next-game__countdown-label">Live Countdown</div>
+        <div class="next-game__date"><span class="next-game__calendar" aria-hidden="true"></span><div>${dateLabel}<span><strong>${weekdayLabel}</strong><i></i>${timeLabel} CET</span></div></div>
+        <div class="next-game__rule"></div>
+        <div class="next-game__countdown-label"><i></i><strong>Live</strong> Countdown</div>
         <div class="next-game__countdown" data-next-countdown>
           <span><b data-countdown-days>00</b><small>Days</small></span>
           <span><b data-countdown-hours>00</b><small>Hours</small></span>
@@ -329,5 +335,13 @@ function initStoryScroll() {
 
 buildRain();
 initStoryScroll();
+renderNextGame({
+  strHomeTeam: "Lille",
+  strAwayTeam: "Paris Saint-Germain",
+  strHomeTeamBadge: "https://r2.thesportsdb.com/images/media/team/badge/2giize1534005340.png",
+  strAwayTeamBadge: "https://r2.thesportsdb.com/images/media/team/badge/rwqrrq1473504808.png",
+  dateEvent: "2026-08-28",
+  strTime: "18:45:00"
+}, null, null);
 loadNextGames();
 window.addEventListener("resize", buildRain);

@@ -795,3 +795,217 @@ a {
     height: 29px;
   }
 }
+
+/* Next game fixture banner */
+.next-games {
+  position: absolute;
+  left: clamp(28px, 4vw, 66px);
+  bottom: clamp(28px, 4vw, 54px);
+  width: min(48vw, 690px);
+  padding: 22px 28px;
+  border: 1px solid rgba(197, 31, 45, 0.7);
+  border-radius: 8px;
+  background:
+    radial-gradient(100% 130% at 100% 100%, rgba(197, 31, 45, 0.15), transparent 56%),
+    rgba(5, 5, 6, 0.72);
+  backdrop-filter: blur(5px);
+  overflow: hidden;
+  z-index: 4;
+}
+
+.next-game {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
+  gap: 28px;
+  align-items: center;
+}
+
+.next-game__eyebrow {
+  color: #ff2738;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+}
+
+.next-game__title {
+  margin: 7px 0 0;
+  color: #f5f0e8;
+  font-family: Anton, Impact, sans-serif;
+  font-size: clamp(38px, 4.7vw, 72px);
+  font-weight: 400;
+  line-height: 0.84;
+  text-transform: uppercase;
+}
+
+.next-game__underline {
+  width: 48px;
+  height: 3px;
+  margin: 13px 0 16px;
+  background: #ff2738;
+}
+
+.next-game__teams {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+}
+
+.next-game__badge {
+  display: block;
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+
+.next-game__versus {
+  position: relative;
+  color: #f5f0e8;
+  font-family: Anton, Impact, sans-serif;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1;
+}
+
+.next-game__versus::after {
+  content: "";
+  position: absolute;
+  top: -17px;
+  right: -13px;
+  width: 1px;
+  height: 46px;
+  background: #ff2738;
+  transform: rotate(24deg);
+  opacity: 0.75;
+}
+
+.next-game__details {
+  display: grid;
+  gap: 12px;
+  padding-left: 22px;
+  border-left: 1px solid rgba(245, 240, 232, 0.15);
+  transform: none;
+}
+
+.next-game__date {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #f5f0e8;
+  font-family: Anton, Impact, sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.next-game__calendar {
+  width: 17px;
+  height: 16px;
+  margin-top: 1px;
+  border: 2px solid #ff2738;
+  border-radius: 2px;
+  background: linear-gradient(#ff2738 0 2px, transparent 2px);
+}
+
+.next-game__date > div > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 5px;
+  color: rgba(245, 240, 232, 0.78);
+  font-family: "League Spartan", "Segoe UI", Arial, sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+
+.next-game__date strong,
+.next-game__countdown-label strong {
+  color: #ff2738;
+}
+
+.next-game__date i {
+  width: 1px;
+  height: 10px;
+  background: rgba(245, 240, 232, 0.35);
+}
+
+.next-game__rule {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(245, 240, 232, 0.22), rgba(245, 240, 232, 0.03));
+}
+
+.next-game__countdown-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(245, 240, 232, 0.7);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+}
+
+.next-game__countdown-label i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff2738;
+  box-shadow: 0 0 8px rgba(255, 39, 56, 0.9);
+}
+
+.next-game__countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+}
+
+.next-game__countdown > span {
+  display: grid;
+  justify-items: center;
+  padding: 8px 3px 6px;
+  border: 1px solid rgba(197, 31, 45, 0.68);
+  border-radius: 4px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0.15));
+}
+
+.next-game__countdown b {
+  color: #ff2738;
+  font-family: Anton, Impact, sans-serif;
+  font-size: clamp(18px, 2.1vw, 32px);
+  line-height: 0.9;
+}
+
+.next-game__countdown small {
+  margin-top: 5px;
+  color: rgba(245, 240, 232, 0.65);
+  font-size: 6px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 980px) {
+  .next-games {
+    left: 18px;
+    right: 18px;
+    width: auto;
+    bottom: 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .next-games {
+    padding: 17px;
+  }
+
+  .next-game {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .next-game__details {
+    padding: 16px 0 0;
+    border-top: 1px solid rgba(245, 240, 232, 0.15);
+    border-left: 0;
+  }
+}
