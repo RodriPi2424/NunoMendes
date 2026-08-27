@@ -103,6 +103,17 @@ function formatCountdown(targetTime) {
   return `${minutes}M ${seconds}S`;
 }
 
+function getCountdownParts(targetTime) {
+  const diff = Math.max(0, targetTime - Date.now());
+  const totalSeconds = Math.floor(diff / 1000);
+  return {
+    days: Math.floor(totalSeconds / 86400),
+    hours: Math.floor((totalSeconds % 86400) / 3600),
+    minutes: Math.floor((totalSeconds % 3600) / 60),
+    seconds: totalSeconds % 60
+  };
+}
+
 function parseEventTime(event) {
   const dateValue = event.dateEventLocal || event.dateEvent;
   const timeValue = event.strTimeLocal || event.strTime;
@@ -133,18 +144,48 @@ function renderNextGame(event, homeTeam, awayTeam) {
   const away = displayTeamName(event.strAwayTeam);
   const homeBadge = homeTeam?.badge || event.strHomeTeamBadge || "";
   const awayBadge = awayTeam?.badge || event.strAwayTeamBadge || "";
+  const dateLabel = formatDate(event.dateEventLocal || event.dateEvent);
+  const timeLabel = formatTime(event.dateEventLocal || event.dateEvent, event.strTimeLocal || event.strTime);
+  const kickoff = parseEventTime(event);
   nextGamesNode.innerHTML = `
     <article class="next-game">
-      <div class="next-game__teams">
+      <div class="next-game__intro">
+        <div class="next-game__eyebrow">Next Games</div>
+        <h2 class="next-game__title">Upcoming</h2>
+        <div class="next-game__teams">
         <span class="next-game__team">
           <img class="next-game__badge" src="${homeBadge}" alt="${homeTeam?.name || home}">
         </span>
+        <span class="next-game__versus" aria-hidden="true">vs</span>
         <span class="next-game__team">
           <img class="next-game__badge" src="${awayBadge}" alt="${awayTeam?.name || away}">
         </span>
+        </div>
+      </div>
+      <div class="next-game__details">
+        <div class="next-game__date">${dateLabel}<span>${timeLabel} CET</span></div>
+        <div class="next-game__countdown-label">Live Countdown</div>
+        <div class="next-game__countdown" data-next-countdown>
+          <span><b data-countdown-days>00</b><small>Days</small></span>
+          <span><b data-countdown-hours>00</b><small>Hours</small></span>
+          <span><b data-countdown-minutes>00</b><small>Minutes</small></span>
+          <span><b data-countdown-seconds>00</b><small>Seconds</small></span>
+        </div>
       </div>
     </article>
   `;
+
+  clearCountdownTimer();
+  if (kickoff) {
+    const update = () => {
+      const parts = getCountdownParts(kickoff);
+      ["days", "hours", "minutes", "seconds"].forEach((part) => {
+        setText(nextGamesNode.querySelector(`[data-countdown-${part}]`), String(parts[part]).padStart(2, "0"));
+      });
+    };
+    update();
+    countdownTimer = window.setInterval(update, 1000);
+  }
 }
 
 async function loadNextGames() {
