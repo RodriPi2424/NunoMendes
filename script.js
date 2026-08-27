@@ -178,7 +178,7 @@ function renderNextGame(event, homeTeam, awayTeam) {
         </div>
       </div>
       <div class="next-game__details">
-        <div class="next-game__date"><span class="next-game__calendar" aria-hidden="true"></span><div>${dateLabel}<span><strong>${weekdayLabel}</strong><i></i>${timeLabel} CET</span></div></div>
+        <div class="next-game__date"><span class="next-game__calendar" aria-hidden="true"></span><div>${dateLabel}<span><strong>${weekdayLabel}</strong><i></i><b class="next-game__kickoff">${timeLabel} CET</b></span></div></div>
         <div class="next-game__rule"></div>
         <div class="next-game__countdown-label"><i></i><strong>Live</strong> Countdown</div>
         <div class="next-game__countdown" data-next-countdown>

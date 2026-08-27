@@ -915,6 +915,12 @@ a {
   color: #ff2738;
 }
 
+.next-game__kickoff {
+  color: #f5f0e8;
+  font-size: 13px;
+  font-weight: 700;
+}
+
 .next-game__date i {
   width: 1px;
   height: 10px;
