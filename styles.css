@@ -270,8 +270,8 @@ a {
 .hero-statement {
   position: absolute;
   left: clamp(28px, 4vw, 66px);
-  top: clamp(140px, 20vh, 205px);
-  width: min(38vw, 480px);
+  top: clamp(80px, 11vh, 120px);
+  width: min(44vw, 560px);
   z-index: 3;
 }
 
@@ -285,12 +285,13 @@ a {
 
 .hero-statement p {
   display: grid;
+  row-gap: 3px;
   margin: 0;
   color: #f5f0e8;
   font-family: Anton, Impact, sans-serif;
-  font-size: clamp(32px, 3.25vw, 50px);
+  font-size: clamp(44px, 5.5vw, 86px);
   font-weight: 400;
-  line-height: 0.82;
+  line-height: 0.78;
   text-transform: uppercase;
 }
 
