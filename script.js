@@ -149,10 +149,7 @@ function renderNextGame(event, homeTeam, awayTeam) {
   const kickoff = parseEventTime(event);
   nextGamesNode.innerHTML = `
     <article class="next-game">
-      <div class="next-game__intro">
-        <div class="next-game__eyebrow">Next Games</div>
-        <h2 class="next-game__title">Upcoming</h2>
-        <div class="next-game__teams">
+      <div class="next-game__teams">
         <span class="next-game__team">
           <img class="next-game__badge" src="${homeBadge}" alt="${homeTeam?.name || home}">
         </span>
@@ -160,7 +157,6 @@ function renderNextGame(event, homeTeam, awayTeam) {
         <span class="next-game__team">
           <img class="next-game__badge" src="${awayBadge}" alt="${awayTeam?.name || away}">
         </span>
-        </div>
       </div>
       <div class="next-game__details">
         <div class="next-game__date">${dateLabel}<span>${timeLabel} CET</span></div>
