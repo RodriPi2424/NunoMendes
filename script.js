@@ -199,6 +199,10 @@ function renderNextGame(event, homeTeam, awayTeam) {
 }
 
 async function loadNextGames() {
+  if (!nextGamesNode) {
+    return;
+  }
+
   try {
     const response = await fetch(NEXT_EVENT_URL, { cache: "no-store" });
 
@@ -325,13 +329,5 @@ function initStoryScroll() {
 
 buildRain();
 initStoryScroll();
-renderNextGame({
-  strHomeTeam: "Lille",
-  strAwayTeam: "Paris Saint-Germain",
-  strHomeTeamBadge: "https://r2.thesportsdb.com/images/media/team/badge/2giize1534005340.png",
-  strAwayTeamBadge: "https://r2.thesportsdb.com/images/media/team/badge/rwqrrq1473504808.png",
-  dateEvent: "2026-08-28",
-  strTime: "18:45:00"
-}, null, null);
 loadNextGames();
 window.addEventListener("resize", buildRain);
