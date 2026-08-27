@@ -267,38 +267,6 @@ a {
   z-index: 4;
 }
 
-.hero-quote {
-  position: absolute;
-  left: clamp(28px, 4vw, 66px);
-  top: clamp(180px, 28vh, 290px);
-  width: min(32vw, 390px);
-  margin: 0;
-  padding-left: 16px;
-  border-left: 2px solid #c51f2d;
-  z-index: 3;
-}
-
-.hero-quote p {
-  margin: 0;
-  color: rgba(245, 240, 232, 0.92);
-  font-family: Anton, Impact, sans-serif;
-  font-size: clamp(20px, 2.25vw, 34px);
-  font-weight: 400;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
-.hero-quote cite {
-  display: block;
-  margin-top: 12px;
-  color: #ff2738;
-  font-size: 9px;
-  font-style: normal;
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-}
-
 .next-games__eyebrow {
   color: #ff2738;
   font-size: 8px;
@@ -616,11 +584,6 @@ a {
     max-width: none;
     font-size: 17px;
   }
-
-  .hero-quote {
-    top: 150px;
-    width: min(50vw, 360px);
-  }
 }
 
 @media (max-width: 640px) {
@@ -644,11 +607,6 @@ a {
 
   .next-games {
     padding: 16px 16px 14px;
-  }
-
-  .hero-quote {
-    top: 120px;
-    width: calc(100% - 36px);
   }
 
   .next-game__meta-item {
