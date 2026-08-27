@@ -804,7 +804,7 @@ a {
   width: min(48vw, 690px);
   padding: 22px 28px;
   border: 1px solid rgba(197, 31, 45, 0.7);
-  border-radius: 8px;
+  border-radius: 0;
   background:
     radial-gradient(100% 130% at 100% 100%, rgba(197, 31, 45, 0.15), transparent 56%),
     rgba(5, 5, 6, 0.72);
@@ -954,7 +954,7 @@ a {
   justify-items: center;
   padding: 8px 3px 6px;
   border: 1px solid rgba(197, 31, 45, 0.68);
-  border-radius: 4px;
+  border-radius: 0;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0.15));
 }
 
