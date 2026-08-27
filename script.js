@@ -1,29 +1,16 @@
 const PSG_TEAM_ID = "133714";
 const NEXT_EVENT_URL = `https://www.thesportsdb.com/api/v1/json/3/eventsnext.php?id=${PSG_TEAM_ID}`;
+const TEAM_LOOKUP_URL = "https://www.thesportsdb.com/api/v1/json/3/lookupteam.php?id=";
 
-const homeName = document.querySelector("[data-home-name]");
-const awayName = document.querySelector("[data-away-name]");
-const homeBadge = document.querySelector("[data-home-badge]");
-const awayBadge = document.querySelector("[data-away-badge]");
-const dateNode = document.querySelector("[data-date]");
-const timeNode = document.querySelector("[data-time]");
-const metaNode = document.querySelector("[data-meta]");
 const rainNode = document.querySelector(".rain");
 const storyScroll = document.querySelector("[data-story-scroll]");
+const nextGamesNode = document.querySelector("[data-next-games]");
+let countdownTimer = null;
 
 function setText(node, value) {
   if (node) {
     node.textContent = value;
   }
-}
-
-function setBadge(node, src, alt) {
-  if (!node || !src) {
-    return;
-  }
-
-  node.src = src;
-  node.alt = alt;
 }
 
 function formatDate(dateValue) {
@@ -39,7 +26,7 @@ function formatDate(dateValue) {
 
   return new Intl.DateTimeFormat("en-GB", {
     day: "2-digit",
-    month: "long",
+    month: "short",
     year: "numeric"
   }).format(parsed).toUpperCase();
 }
@@ -70,15 +57,132 @@ function displayTeamName(value) {
   return value || "Team TBC";
 }
 
-function displayLeagueName(value) {
-  if (value === "French Ligue 1") {
-    return "Ligue 1";
+async function fetchTeamBadge(teamId) {
+  if (!teamId) {
+    return null;
   }
 
-  return value || "Upcoming fixture";
+  const response = await fetch(`${TEAM_LOOKUP_URL}${teamId}`, { cache: "no-store" });
+
+  if (!response.ok) {
+    throw new Error(`Team lookup failed: ${response.status}`);
+  }
+
+  const payload = await response.json();
+  const team = payload?.teams?.[0];
+
+  return team
+    ? {
+        name: team.strTeam || "Team TBC",
+        badge: team.strBadge || team.strTeamBadge || "",
+      }
+    : null;
 }
 
-async function loadNextFixture() {
+function formatCountdown(targetTime) {
+  const diff = targetTime - Date.now();
+
+  if (!Number.isFinite(diff) || diff <= 0) {
+    return "LIVE";
+  }
+
+  const totalSeconds = Math.floor(diff / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  if (days > 0) {
+    return `${days}D ${hours}H ${minutes}M`;
+  }
+
+  if (hours > 0) {
+    return `${hours}H ${minutes}M ${seconds}S`;
+  }
+
+  return `${minutes}M ${seconds}S`;
+}
+
+function parseEventTime(event) {
+  const dateValue = event.dateEventLocal || event.dateEvent;
+  const timeValue = event.strTimeLocal || event.strTime;
+
+  if (!dateValue) {
+    return null;
+  }
+
+  const iso = `${dateValue}T${timeValue || "20:00:00"}`;
+  const parsed = new Date(iso);
+
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
+}
+
+function clearCountdownTimer() {
+  if (countdownTimer) {
+    window.clearInterval(countdownTimer);
+    countdownTimer = null;
+  }
+}
+
+function renderNextGame(event, homeTeam, awayTeam) {
+  if (!nextGamesNode) {
+    return;
+  }
+
+  const home = displayTeamName(event.strHomeTeam);
+  const away = displayTeamName(event.strAwayTeam);
+  const homeBadge = homeTeam?.badge || event.strHomeTeamBadge || "";
+  const awayBadge = awayTeam?.badge || event.strAwayTeamBadge || "";
+  const dateLabel = formatDate(event.dateEventLocal || event.dateEvent);
+  const timeLabel = formatTime(event.dateEventLocal || event.dateEvent, event.strTimeLocal || event.strTime);
+  const kickoff = parseEventTime(event);
+
+  nextGamesNode.innerHTML = `
+    <article class="next-game">
+      <div class="next-game__teams">
+        <span class="next-game__team">
+          <img class="next-game__badge" src="${homeBadge}" alt="${homeTeam?.name || home}">
+          <span class="next-game__team-name">${home}</span>
+        </span>
+        <span class="next-game__versus" aria-hidden="true">vs</span>
+        <span class="next-game__team">
+          <img class="next-game__badge" src="${awayBadge}" alt="${awayTeam?.name || away}">
+          <span class="next-game__team-name">${away}</span>
+        </span>
+      </div>
+      <div class="next-game__meta">
+        <div class="next-game__meta-item">
+          <span class="next-game__label">Day</span>
+          <span class="next-game__value" data-next-day>${dateLabel}</span>
+        </div>
+        <div class="next-game__meta-item">
+          <span class="next-game__label">Time</span>
+          <span class="next-game__value" data-next-time>${timeLabel}</span>
+        </div>
+        <div class="next-game__countdown" data-next-countdown>${kickoff ? formatCountdown(kickoff) : "TBC"}</div>
+      </div>
+    </article>
+  `;
+
+  clearCountdownTimer();
+
+  if (!kickoff) {
+    return;
+  }
+
+  const countdownNode = nextGamesNode.querySelector("[data-next-countdown]");
+
+  const tick = () => {
+    if (countdownNode) {
+      countdownNode.textContent = formatCountdown(kickoff);
+    }
+  };
+
+  tick();
+  countdownTimer = window.setInterval(tick, 1000);
+}
+
+async function loadNextGames() {
   try {
     const response = await fetch(NEXT_EVENT_URL, { cache: "no-store" });
 
@@ -87,21 +191,33 @@ async function loadNextFixture() {
     }
 
     const payload = await response.json();
-    const event = payload?.events?.[0];
+    const events = Array.isArray(payload?.events) ? payload.events : [];
 
-    if (!event) {
-      throw new Error("No upcoming event found");
+    if (!events.length) {
+      throw new Error("No upcoming events found");
     }
 
-    setText(homeName, displayTeamName(event.strHomeTeam));
-    setText(awayName, displayTeamName(event.strAwayTeam));
-    setBadge(homeBadge, event.strHomeTeamBadge, event.strHomeTeam || "Home team");
-    setBadge(awayBadge, event.strAwayTeamBadge, event.strAwayTeam || "Away team");
-    setText(dateNode, formatDate(event.dateEventLocal || event.dateEvent));
-    setText(timeNode, formatTime(event.dateEventLocal || event.dateEvent, event.strTimeLocal || event.strTime));
-    setText(metaNode, displayLeagueName(event.strLeague));
+    const event = events[0];
+    // The event response already includes both team badge URLs. Optional
+    // lookups enrich names but must never prevent the fixture from rendering.
+    const [homeTeam, awayTeam] = await Promise.all([
+      fetchTeamBadge(event.idHomeTeam).catch(() => null),
+      fetchTeamBadge(event.idAwayTeam).catch(() => null)
+    ]);
+
+    renderNextGame(event, homeTeam, awayTeam);
   } catch (error) {
-    setText(metaNode, "Live fixture feed unavailable");
+    clearCountdownTimer();
+    if (nextGamesNode) {
+      renderNextGame({
+        strHomeTeam: "Lille",
+        strAwayTeam: "Paris Saint-Germain",
+        strHomeTeamBadge: "https://r2.thesportsdb.com/images/media/team/badge/2giize1534005340.png",
+        strAwayTeamBadge: "https://r2.thesportsdb.com/images/media/team/badge/rwqrrq1473504808.png",
+        dateEvent: "2026-08-28",
+        strTime: "18:45:00"
+      }, null, null);
+    }
   }
 }
 
@@ -191,7 +307,15 @@ function initStoryScroll() {
   });
 }
 
-loadNextFixture();
 buildRain();
 initStoryScroll();
+renderNextGame({
+  strHomeTeam: "Lille",
+  strAwayTeam: "Paris Saint-Germain",
+  strHomeTeamBadge: "https://r2.thesportsdb.com/images/media/team/badge/2giize1534005340.png",
+  strAwayTeamBadge: "https://r2.thesportsdb.com/images/media/team/badge/rwqrrq1473504808.png",
+  dateEvent: "2026-08-28",
+  strTime: "18:45:00"
+}, null, null);
+loadNextGames();
 window.addEventListener("resize", buildRain);

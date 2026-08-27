@@ -232,132 +232,11 @@ a {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(280px, 36vw) minmax(360px, 1fr);
-  align-items: start;
+  grid-template-columns: minmax(360px, 1fr);
+  align-items: end;
   height: calc(100vh - 86px);
   height: calc(100svh - 86px);
   padding: 0 clamp(28px, 4vw, 66px);
-}
-
-.fixture {
-  display: flex;
-  flex-direction: column;
-  align-self: stretch;
-  max-width: 420px;
-  height: calc(100vh - 86px);
-  height: calc(100svh - 86px);
-  padding-top: clamp(100px, 14vh, 150px);
-  padding-bottom: 5vh;
-}
-
-.fixture__eyebrow {
-  margin: 0 0 10px;
-  color: #ff2738;
-  font-size: 13px;
-  font-weight: 900;
-  letter-spacing: 0.48em;
-  text-transform: uppercase;
-}
-
-.fixture__title {
-  margin: 0;
-  font-family: Anton, Impact, Haettenschweiler, sans-serif;
-  font-size: clamp(86px, 10vw, 138px);
-  line-height: 0.82;
-  text-transform: uppercase;
-  color: #f5f0e8;
-}
-
-.fixture__rule {
-  width: 58px;
-  height: 1px;
-  margin: 28px 0 24px;
-  background: #c51f2d;
-}
-
-.fixture__teams {
-  display: grid;
-  grid-template-columns: 72px 42px 72px;
-  align-items: end;
-  gap: 16px;
-}
-
-.fixture-team {
-  margin: 0;
-  text-align: center;
-}
-
-.fixture-team img {
-  display: block;
-  width: 62px;
-  height: 62px;
-  margin: 0 auto 9px;
-  object-fit: contain;
-}
-
-.fixture-team figcaption {
-  color: rgba(245, 240, 232, 0.68);
-  font-size: 8px;
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: 0.18em;
-  min-height: 18px;
-  text-transform: uppercase;
-}
-
-.fixture__versus {
-  align-self: center;
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
-
-.fixture__meta {
-  margin-top: 24px;
-}
-
-.fixture__date {
-  color: rgba(245, 240, 232, 0.8);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.58em;
-  text-transform: uppercase;
-}
-
-.fixture__time {
-  margin-top: 9px;
-  color: #ff3346;
-  font-size: clamp(40px, 5vw, 56px);
-  font-weight: 900;
-  letter-spacing: 0.34em;
-}
-
-.fixture__league {
-  margin-top: 9px;
-  color: rgba(245, 240, 232, 0.62);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.48em;
-  text-transform: uppercase;
-}
-
-.store-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 28px;
-  width: 156px;
-  height: 48px;
-  margin-top: auto;
-  padding: 0 24px;
-  border: 1px solid #c51f2d;
-  color: #f5f0e8;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 0.34em;
-  text-transform: uppercase;
-  background: rgba(0, 0, 0, 0.12);
 }
 
 .hero-visual {
@@ -374,6 +253,118 @@ a {
   width: 100%;
   height: auto;
   filter: drop-shadow(0 26px 42px rgba(0, 0, 0, 0.44));
+}
+
+.next-games {
+  position: absolute;
+  left: clamp(28px, 4vw, 66px);
+  bottom: clamp(24px, 4vw, 44px);
+  width: min(46vw, 620px);
+  padding: 20px 22px 18px;
+  border: 1px solid rgba(197, 31, 45, 0.82);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.16));
+  backdrop-filter: blur(4px);
+  z-index: 4;
+}
+
+.next-games__eyebrow {
+  color: #ff2738;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+}
+
+.next-games__title {
+  margin: 10px 0 16px;
+  color: #f5f0e8;
+  font-family: Anton, Impact, Haettenschweiler, sans-serif;
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.next-games__card {
+  display: grid;
+  gap: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.next-game__teams {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #f5f0e8;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.next-game__team {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.next-game__badge {
+  display: block;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.next-game__team-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.next-game__versus {
+  color: rgba(245, 240, 232, 0.7);
+  font-size: 13px;
+  letter-spacing: 0.28em;
+}
+
+.next-game__meta {
+  display: grid;
+  gap: 12px;
+}
+
+.next-game__meta-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.next-game__label {
+  color: rgba(245, 240, 232, 0.7);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.next-game__value {
+  color: #f5f0e8;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+.next-game__countdown {
+  color: #ff2738;
+  font-family: Anton, Impact, Haettenschweiler, sans-serif;
+  font-size: clamp(34px, 4.5vw, 60px);
+  line-height: 0.95;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 [data-story-scroll] {
@@ -511,21 +502,21 @@ a {
 
 @media (max-width: 1180px) {
   .hero-grid {
-    grid-template-columns: minmax(260px, 38vw) minmax(300px, 1fr);
-  }
-
-  .fixture {
-    padding-bottom: 3vh;
+    grid-template-columns: minmax(300px, 1fr);
   }
 
   .hero-visual {
-    width: min(50vw, 580px);
+    width: min(58vw, 620px);
     margin-right: 0;
   }
 
   .hero-overflow-portrait {
     left: 38vw;
     width: 32vw;
+  }
+
+  .next-games {
+    width: min(52vw, 560px);
   }
 }
 
@@ -552,20 +543,18 @@ a {
     padding-top: 36px;
   }
 
-  .fixture {
-    position: relative;
-    z-index: 4;
-    max-width: 360px;
-    height: auto;
-    padding-top: 40px;
-    padding-bottom: 0;
-  }
-
   .hero-visual {
     width: min(78vw, 500px);
-    margin: -180px -8vw 0 auto;
+    margin: -120px -8vw 0 auto;
     justify-self: end;
     opacity: 0.96;
+  }
+
+  .next-games {
+    left: 18px;
+    right: 18px;
+    width: auto;
+    bottom: 18px;
   }
 
   .story-scroll__viewport {
@@ -611,53 +600,42 @@ a {
     padding-inline: 18px;
   }
 
-  .fixture {
-    height: auto;
-    padding-top: 28px;
-  }
-
-  .fixture__eyebrow {
-    font-size: 11px;
-  }
-
-  .fixture__title {
-    font-size: clamp(72px, 26vw, 108px);
-  }
-
-  .fixture__teams {
-    grid-template-columns: 64px 36px 64px;
-    gap: 10px;
-  }
-
-  .fixture-team img {
-    width: 54px;
-    height: 54px;
-  }
-
-  .fixture-team figcaption {
-    font-size: 7px;
-  }
-
-  .fixture__date,
-  .fixture__league {
-    font-size: 11px;
-    letter-spacing: 0.38em;
-  }
-
-  .fixture__time {
-    font-size: 34px;
-    letter-spacing: 0.22em;
-  }
-
-  .store-button {
-    width: 136px;
-    height: 42px;
-    padding: 0 18px;
-    font-size: 10px;
-  }
-
   .hero-visual {
     width: min(96vw, 440px);
     margin-top: 14px;
+  }
+
+  .next-games {
+    padding: 16px 16px 14px;
+  }
+
+  .next-game__meta-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .next-game__teams {
+    gap: 10px;
+    font-size: 15px;
+    flex-wrap: wrap;
+  }
+
+  .next-game__badge {
+    width: 28px;
+    height: 28px;
+  }
+
+  .next-game__value {
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .next-game__meta {
+    gap: 10px;
+  }
+
+  .next-game__countdown {
+    font-size: 32px;
   }
 }

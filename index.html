@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <main class="hero" aria-label="Nuno Mendes hero artwork">
+    <main class="hero" id="home" aria-label="Nuno Mendes hero artwork">
       <div class="hero-background">
         <img
           class="hero-background__image"
@@ -27,7 +27,7 @@
           alt="Nuno Mendes"
         >
         <nav class="hero-nav" aria-label="Primary">
-          <a class="is-active" href="#fixture">Home</a>
+          <a class="is-active" href="#home">Home</a>
           <a href="#story">About</a>
           <a href="#career">Career</a>
           <a href="#gallery">Gallery</a>
@@ -47,38 +47,18 @@
       </div>
 
       <section class="hero-grid">
-        <section class="fixture" id="fixture" aria-label="Next match">
-          <p class="fixture__eyebrow">Next Game</p>
-          <h1 class="fixture__title">Game</h1>
-          <div class="fixture__rule" aria-hidden="true"></div>
-          <div class="fixture__teams">
-            <figure class="fixture-team">
-              <img data-home-badge src="https://r2.thesportsdb.com/images/media/team/badge/2giize1534005340.png" alt="Lille">
-              <figcaption data-home-name>Lille</figcaption>
-            </figure>
-            <div class="fixture__versus">VS</div>
-            <figure class="fixture-team">
-              <img data-away-badge src="https://r2.thesportsdb.com/images/media/team/badge/rwqrrq1473504808.png" alt="Paris Saint-Germain">
-              <figcaption data-away-name>Paris Saint-Germain</figcaption>
-            </figure>
-          </div>
-          <div class="fixture__meta">
-            <div class="fixture__date" data-date>28 AUGUST 2026</div>
-            <div class="fixture__time" data-time>20:45</div>
-            <div class="fixture__league" data-meta>Ligue 1</div>
-          </div>
-          <a class="store-button" id="store" href="#store" aria-label="Open store">
-            <span>Store</span>
-            <span aria-hidden="true">+</span>
-          </a>
-        </section>
-
         <div class="hero-visual">
           <img
             src="assets/nuno-mendes-portrait.png"
             alt="Portrait of Nuno Mendes"
           >
         </div>
+
+        <section class="next-games" aria-label="Next games">
+          <div class="next-games__eyebrow">Next Games</div>
+          <h2 class="next-games__title">Upcoming</h2>
+          <div class="next-games__card" data-next-games></div>
+        </section>
       </section>
     </main>
 
