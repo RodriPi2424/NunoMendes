@@ -643,7 +643,7 @@ a {
 /* Next fixture reference layout */
 .next-games {
   width: min(36vw, 540px);
-  padding: 14px 21px 15px;
+  padding: 8px 14px 9px;
   border-radius: 10px;
 }
 
@@ -661,7 +661,7 @@ a {
 
 .next-games__title,
 .next-game__title {
-  margin: 5px 0 11px;
+  margin: 3px 0 6px;
   font-size: clamp(28px, 3.5vw, 56px);
 }
 
@@ -673,7 +673,7 @@ a {
 .next-game {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 10px;
   align-items: end;
 }
 
