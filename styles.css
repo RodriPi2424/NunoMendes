@@ -267,6 +267,50 @@ a {
   z-index: 4;
 }
 
+.hero-statement {
+  position: absolute;
+  left: clamp(28px, 4vw, 66px);
+  top: clamp(170px, 25vh, 250px);
+  width: min(32vw, 430px);
+  z-index: 3;
+}
+
+.hero-statement__mark {
+  height: 20px;
+  color: #c51f2d;
+  font-family: Georgia, serif;
+  font-size: 62px;
+  line-height: 0.45;
+}
+
+.hero-statement p {
+  display: grid;
+  margin: 0;
+  color: #f5f0e8;
+  font-family: Anton, Impact, sans-serif;
+  font-size: clamp(42px, 4.4vw, 68px);
+  font-weight: 400;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.hero-statement p strong {
+  color: #c51f2d;
+  font-weight: 400;
+}
+
+.hero-statement cite {
+  display: block;
+  margin-top: 13px;
+  padding-left: 4px;
+  color: rgba(245, 240, 232, 0.72);
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
 .next-games__eyebrow {
   color: #ff2738;
   font-size: 8px;
@@ -584,6 +628,11 @@ a {
     max-width: none;
     font-size: 17px;
   }
+
+  .hero-statement {
+    top: 150px;
+    width: min(48vw, 360px);
+  }
 }
 
 @media (max-width: 640px) {
@@ -607,6 +656,11 @@ a {
 
   .next-games {
     padding: 16px 16px 14px;
+  }
+
+  .hero-statement {
+    top: 118px;
+    width: calc(100% - 36px);
   }
 
   .next-game__meta-item {
