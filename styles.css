@@ -698,7 +698,7 @@ a {
 
 .next-game__date {
   color: #f5f0e8;
-  font-size: 10px;
+  font-size: 16px;
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -708,7 +708,7 @@ a {
   display: block;
   margin-top: 2px;
   color: #ff2738;
-  font-size: 7px;
+  font-size: 10px;
 }
 
 .next-game__countdown-label {
