@@ -276,6 +276,23 @@ a {
   z-index: 3;
 }
 
+.hero-25-mark {
+  position: absolute;
+  left: clamp(28px, 4vw, 66px);
+  top: clamp(170px, 25vh, 250px);
+  width: min(38vw, 480px);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero-25-mark img {
+  display: block;
+  width: 100%;
+  height: auto;
+  mix-blend-mode: screen;
+  opacity: 0.82;
+}
+
 .hero-statement__mark {
   height: 20px;
   color: #c51f2d;
@@ -652,6 +669,11 @@ a {
     top: 150px;
     width: min(52vw, 460px);
   }
+
+  .hero-25-mark {
+    top: 150px;
+    width: min(50vw, 360px);
+  }
 }
 
 @media (max-width: 640px) {
@@ -679,6 +701,11 @@ a {
 
   .hero-statement {
     top: 118px;
+    width: calc(100% - 36px);
+  }
+
+  .hero-25-mark {
+    top: 120px;
     width: calc(100% - 36px);
   }
 
